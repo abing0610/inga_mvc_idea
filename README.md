@@ -1,0 +1,1 @@
+SpringMVC   Mybatis    MySQL    easyui  Jackson   Maven FreeMarker
