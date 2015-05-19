@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias alias="Address" type="com.inga.bean.Address"/>
+        <typeAlias alias="Customer" type="com.inga.bean.Customer"/>
+        <typeAlias alias="CustomerEntity" type="com.inga.bean.CustomerEntity"/>
+        <typeAlias alias="Orderr" type="com.inga.bean.Orderr"/>
+        <typeAlias alias="TUser" type="com.inga.bean.TUser"/>
+
+        <!--   第二种方式   -->
+        <!--<package name="com.inga.bean"/>-->
+    </typeAliases>
+    <mappers>
+        <mapper resource="com/inga/mappers/Customer.xml"/>
+        <mapper resource="com/inga/mappers/TUser.xml"/>
+    </mappers>
+</configuration>

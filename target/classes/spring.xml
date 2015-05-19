@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config />
+    <context:component-scan base-package="com.inga"/>
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    
+    
+    <!-- 数据源 -->
+    <bean id="dataSource"
+        class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	    <property name="driverClassName" value="${jdbc.driverClassName}"/>
+	    <property name="url" value="${jdbc.url}"/>
+	    <property name="username" value="${jdbc.username}"/>
+	    <property name="password" value="${jdbc.password}"/>
+	</bean>
+	
+	
+	<bean id="freemarkerConfig"  
+      class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">  
+	    <property name="templateLoaderPath" value="/WEB-INF/view/" />  
+	    <property name="freemarkerSettings">  
+	        <props>  
+	            <prop key="template_update_delay">0</prop>  
+	            <prop key="default_encoding">UTF-8</prop>  
+	            <prop key="number_format">0.##########</prop>  
+	            <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>  
+	            <prop key="classic_compatible">true</prop>  
+	            <prop key="template_exception_handler">ignore</prop>  
+	        </props>  
+	    </property>  
+	</bean>
+	
+	<bean id="viewResolver"  
+      class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">  
+	    <property name="cache" value="true"/>
+	    <property name="suffix" value=".ftl"/> 
+	    <property name="prefix" value="/"/>
+	    <property name="contentType" value="text/html;charset=UTF-8"></property>  
+	</bean> 
+	
+	<!-- spring 整合  mybatis   -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	  <property name="dataSource" ref="dataSource" />
+	  <property name="configLocation" value="classpath:sqlMapConfig.xml"></property>
+    <!-- <property name="mapperLocations" value="classpath:com/inga/mappers/*.xml" /> -->
+  </bean>
+
+   <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+        <property name="basePackage" value="com.inga.dao" />  
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
+    </bean>
+    
+    <!-- 事务的处理 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	  <property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- 处理json数据 -->
+ 	<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">   
+        <!-- 为了处理返回的JSON数据的编码，默认是ISO-88859-1的，这里把它设置为UTF-8,解决有乱码的情况 -->   
+        <property name="supportedMediaTypes">    
+            <list>    
+                  <value>text/html;charset=UTF-8</value>    
+            </list>    
+        </property>    
+    </bean> 
+    
+  <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="mediaTypes">
+            <map>
+                <!-- 告诉视图解析器，返回的类型为json格式 -->
+                <entry key="json" value="application/json" />
+            </map>
+        </property>
+        <property name="defaultViews">
+            <list>
+                <!-- ModelAndView里的数据变成JSON -->
+                <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+            </list>
+        </property>
+    </bean>
+
+</beans>

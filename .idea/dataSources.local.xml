@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - inga_mvc@localhost" uuid="e23a0558-be77-412c-a3bc-c293fa9c1017">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>inga_mvc.*</schema-pattern>
+      <default-schemas>inga_mvc.*</default-schemas>
+    </data-source>
+  </component>
+</project>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - inga_mvc@localhost" uuid="e23a0558-be77-412c-a3bc-c293fa9c1017">
+    <database-info product="MySQL" version="5.7.5-m15-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="inga_mvc"/>
+    <table name="address" schema="" catalog="inga_mvc" type="TABLE">
+      <column name="name" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="address" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="customer" schema="" catalog="inga_mvc" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="orderr" schema="" catalog="inga_mvc" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="order_name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="customer_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="tuser" schema="" catalog="inga_mvc" type="TABLE">
+      <column name="id" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+  </data-source>
+</component>
