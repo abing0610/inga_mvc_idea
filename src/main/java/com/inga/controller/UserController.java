@@ -41,9 +41,11 @@ public class UserController {
 //		System.out.println(" tUser.getName() ： " + tUser.getName());
 		
 		List<TUser> list = new ArrayList<TUser>();
-		
+
+		//正常调用，使用了cache
 		list = this.userService.getUserById(name);
-		
+		//测试调用内部方法，会不会调用cache
+//		list = this.userService.getUserByid2(name);
 		
 		
 		List<Map<String, String>> listmap = new ArrayList<Map<String, String>>();
@@ -92,7 +94,11 @@ public class UserController {
 	@RequestMapping("/index/jsonTest")
 	@ResponseBody
 	public String jsonTest(@RequestParam String name,@RequestParam String age){
-		
+
+//		Map<>
+		Map<String,String> ma1p = new HashMap<String, String>();
+		ma1p.get("1");
+
 		System.out.println("1111111");
 		
 		System.out.println(" name : " + name);

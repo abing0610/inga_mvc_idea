@@ -1,0 +1,195 @@
+@charset "utf-8";
+/* CSS Document */
+html{
+    height:100%;
+}
+body,div,ul,li,h1,h2,h3,h4,h5,h6,form,fieldset,input,textarea,p,blockquote,th,td {    
+    padding: 0;   
+    margin: 0;   
+}   
+table {   
+    border-collapse: collapse;   
+      
+}   
+fieldset,img {    
+    border: 0;   
+}   
+address,caption,cite,code,dfn,em,strong,th,var {   
+    font-weight: normal;   
+    font-style: normal;   
+}   
+ul {   
+    list-style: none;   
+}   
+caption,th {   
+    text-align: left;   
+}
+
+table {  
+	*border-collapse:collapse; /* IE7 and lower */  
+	border-spacing:0;   
+} 
+body {
+	width:100%;
+	height:100%;
+	font-family: "宋体";
+	font-size:12px;
+}
+a {
+	text-decoration:none;
+	color:#175c9c;
+}
+a:hover {
+	text-decoration:none;
+	color:#e28603;
+}
+table {
+    border-collapse:collapse; 
+}
+img {
+	border:0;
+}
+ /* top */
+
+/*------------------------------登录开始---------------------------------*/
+.loginwapper {
+	 width:100%;
+	 height:100%; 
+	 position:relative;
+	 z-index:1;
+	 background:#CCC url(../ui/images/loginbg.jpg)  center top no-repeat;
+}
+.logintop{
+	width:90%;
+	height:100px;
+	position:relative;
+	top:0;
+	left:0;
+	background:url(../ui/images/toplogin.png) top right no-repeat;
+}
+/*logo*/
+.synthesis{
+	width:210px;
+	height:100px;
+	position:absolute;
+	top:0;
+	left:30px;
+	background:url(../ui/images/synthesis.png) 0 0 no-repeat;
+}
+/*标题*/
+.logintit {
+	height:40px;
+	overflow:hidden;
+	color:#005ea5;
+	font-weight:700;
+	font-size:34px;
+	font-family:"微软雅黑";
+	letter-spacing:8px;
+	position:absolute;
+	top:10px;
+	left:240px;	
+}
+/*左侧图片*/
+.loginimg {
+	width:735px;
+	height:515px;
+	overflow:hidden;
+    z-index:2;
+	position:absolute;
+	bottom:0;
+	left:50%;
+	margin-left:-735px;
+	background:url(../ui/images/loginimg.png) 0 0 no-repeat;
+}
+/*登录区*/
+.workarea {
+	width:400px;
+	height:400px;
+	z-index:3;
+	position:absolute;
+	top:50%;
+	left:55%;
+	margin-top:-100px;
+	background:url(../ui/images/workarea.png) 0 0 no-repeat;
+}
+.workarea h3{
+	width:400px;
+	height:56px;
+	color:#fff;
+	font-size:18px;
+	font-weight:bold;
+	line-height:50px;
+	text-indent:20px;
+	background:url(../ui/images/logintitle.png) 4px -6px no-repeat;
+}
+.workarea table {
+	width:292px;
+	height:200px;
+	margin:0 auto;
+}
+.workarea table a {
+	color:#FFF; 
+	text-decoration: none;
+	font:16px '宋体';
+	font-weight:bold;
+	line-height:39px;
+}
+.workarea table input{
+	text-align:center;
+	border:1px solid #a3c7e2;
+	width:292px;
+	height:34px;
+	padding:4px 4px;
+	border-radius:5px;
+	-moz-border-radius:5px; /* 老的 Firefox */
+} 
+.workarea table input[type="text"]{
+	background-image:url(../ui/images/user.png);
+	background-repeat:no-repeat;
+	background-position:0 left;
+	color:#8e8c8c;
+}
+.workarea table input[type="password"]{
+	background-image:url(../ui/images/password.png);
+	background-repeat:no-repeat;
+	background-position:0 left;
+	color:#8e8c8c;
+}
+#username {
+	border-radius:8px;
+	-moz-border-radius:8px; /* 老的 Firefox */
+	width:292px;
+	height:34px;
+	line-height:34px;
+	display:block;
+    text-indent:42px;
+	overflow:hidden;
+} 
+#password {
+	border-radius:8px;
+	-moz-border-radius:8px; /* 老的 Firefox */
+	width:292px;
+	height:34px;
+	line-height:34px;
+	display:block;
+	text-indent:42px;
+	overflow:hidden;}  
+.submitbtn{
+	width:292px;
+	height:34px;
+	line-height:34px;
+	display:inline-block;
+	text-decoration:none;
+	text-align:center;
+	border-radius:8px;
+	-moz-border-radius:8px; /* 老的 Firefox */
+	background:url(../ui/images/loginbtn.png) 0 0 repeat-x;
+	border:1px solid #3373b9;	
+}
+.submitbtn:hover{
+	background:url(../ui/images/loginbtnhover.png) 0 0 repeat-x;
+	border:1px solid #e4720c;
+}
+/*------------------------------登录结束---------------------------------*
+
+

@@ -10,16 +10,22 @@
     ${user} <br/>
 	<#if user=='inga'> ,  you so cool!</#if><br/>
 
-	<ul>
-	<#list list as work >
-		<li>${work.id}
-		<li>${work.name}
-		<li>${work.password}
-	</#list>
-	</ul>
+	<table border="1">
+		<tr>
+			<td>work.id</td>
+            <td>work.name</td>
+            <td>work.password</td>
+		</tr>
+		<#list list as work >
+			<tr>
+				<td>${work.id}</td>
+				<td>${work.name}</td>
+				<td>${work.password}</td>
+			</tr>
+		</#list>
+	</table>
 	
 	<br/><br/><br/>
-	<font size="30">显示的就是数据库，成功啦！</font>
 	<br/><br/><br/>
 	<#include "jsp/show/body.ftl">
 	

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inga.dao.CustomerMapper">
+
+  <resultMap id="customerBean" type="com.inga.bean.CustomerEntity">
+  	 <id column="id" property="id" jdbcType="INTEGER"/>
+     <result column="name" property="name" jdbcType="VARCHAR"/>
+     <result column="name" property="name_or" jdbcType="VARCHAR"/>
+     <result column="order_name" property="order_name" jdbcType="VARCHAR"/> 
+  </resultMap>
+  
+  
+  <select id="queryCustomer"  resultMap="customerBean" parameterType="com.inga.bean.Orderr">
+  	SELECT 
+  	
+  	o.order_name  as order_name,
+  	o.name  as name_or,
+  	t.id as id
+  	<!-- t.name as name -->
+  	
+  	FROM ORDERR o left  join CUSTOMER t on t.id=o.customer_id 
+  </select>
+
+</mapper>

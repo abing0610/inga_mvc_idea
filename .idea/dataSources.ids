@@ -6,7 +6,13 @@
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
     <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="db_affairmanage"/>
+    <schema name="" catalog="information_schema"/>
     <schema name="" catalog="inga_mvc"/>
+    <schema name="" catalog="jeesite"/>
+    <schema name="" catalog="menagerie"/>
+    <schema name="" catalog="mysql"/>
+    <schema name="" catalog="performance_schema"/>
     <table name="address" schema="" catalog="inga_mvc" type="TABLE">
       <column name="name" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
       <column name="address" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12"/>
@@ -22,10 +28,26 @@
       <column name="customer_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="name" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
     </table>
+    <table name="people" schema="" catalog="inga_mvc" type="TABLE">
+      <column name="last_name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="first_naem" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="dob" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <index name="last_name" unique="false" columns="last_name,first_naem,dob"/>
+    </table>
     <table name="tuser" schema="" catalog="inga_mvc" type="TABLE">
       <column name="id" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
       <column name="name" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
       <column name="password" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="weixinmsg" schema="" catalog="inga_mvc" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="TOUSERNAME" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="FROMUSERNAME" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATETIME" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="MSGTYPE" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CONTENT" sqlType="VARCHAR" precision="300" scale="0" nullable="true" jdbcType="12"/>
+      <column name="MSGID" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID"/>
     </table>
   </data-source>
 </component>

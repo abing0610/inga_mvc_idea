@@ -2,17 +2,28 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:cache="http://www.springframework.org/schema/cache"
     xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
     xsi:schemaLocation="
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/cache
+        http://www.springframework.org/schema/cache/spring-cache.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop.xsd">
+
 
 	<context:annotation-config />
     <context:component-scan base-package="com.inga"/>
     <context:property-placeholder location="classpath:jdbc.properties"/>
-    
+    <!-- 为了spring的cache的使用 -->
+    <cache:annotation-driven />
+
+    <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->
+
     
     <!-- 数据源 -->
     <bean id="dataSource"
@@ -51,19 +62,20 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 	  <property name="dataSource" ref="dataSource" />
 	  <property name="configLocation" value="classpath:sqlMapConfig.xml"></property>
-    <!-- <property name="mapperLocations" value="classpath:com/inga/mappers/*.xml" /> -->
+      <property name="mapperLocations" value="classpath:sqlmap/*.xml" />
   </bean>
 
    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
         <property name="basePackage" value="com.inga.dao" />  
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+        <property name="annotationClass" value="com.inga.utils.MyBatisDao" />
     </bean>
     
     <!-- 事务的处理 -->
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<!--<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 	  <property name="dataSource" ref="dataSource" />
-	</bean>
+	</bean>-->
 	
 	<!-- 处理json数据 -->
  	<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">   
@@ -89,5 +101,41 @@
             </list>
         </property>
     </bean>
+
+    <!-- generic cache manager 配置缓存 -->
+    <bean id="cacheManager"
+          class="org.springframework.cache.support.SimpleCacheManager">
+        <property name="caches">
+            <set>
+                <bean
+                        class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean"
+                        p:name="default" />
+
+                <bean
+                        class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean"
+                        p:name="userCache" />
+            </set>
+        </property>
+    </bean>
+
+    <!-- spring aop 原理 -->
+   <!-- <bean id="userTarget" class="com.inga.service.impl.TestServiceImpl"/>
+
+    <bean id="myAdvisor" class="com.inga.interceptor.AuthorityInterceptor">
+        <property name="tUser"><value>admin</value></property>
+    </bean>
+
+
+    <bean id="service"
+          class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyInterfaces"><value>com.inga.service.TestService</value></property>
+
+        <property name="target" ref="userTarget"/>
+        <property name="interceptorNames">
+            <list>
+                <value>myAdvisor</value>
+            </list>
+        </property>
+    </bean>-->
 
 </beans>

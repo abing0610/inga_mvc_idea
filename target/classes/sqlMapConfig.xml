@@ -3,18 +3,32 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <!--<settings>
+        <setting name="cacheEnabled" value="true"/>
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="multipleResultSetsEnabled" value="true"/>
+        <setting name="useColumnLabel" value="true"/>
+        <setting name="useGeneratedKeys" value="false"/>
+        <setting name="autoMappingBehavior" value="PARTIAL"/>
+        <setting name="defaultExecutorType" value="SIMPLE"/>
+        <setting name="defaultStatementTimeout" value="25"/>
+        <setting name="safeRowBoundsEnabled" value="false"/>
+        <setting name="mapUnderscoreToCamelCase" value="false"/>
+        <setting name="localCacheScope" value="SESSION"/>
+        <setting name="jdbcTypeForNull" value="OTHER"/>
+        <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
+    </settings>-->
+
     <typeAliases>
         <typeAlias alias="Address" type="com.inga.bean.Address"/>
         <typeAlias alias="Customer" type="com.inga.bean.Customer"/>
         <typeAlias alias="CustomerEntity" type="com.inga.bean.CustomerEntity"/>
         <typeAlias alias="Orderr" type="com.inga.bean.Orderr"/>
         <typeAlias alias="TUser" type="com.inga.bean.TUser"/>
+        <typeAlias alias="WeiXinMsg" type="com.inga.bean.WeiXinMsg"/>
 
         <!--   第二种方式   -->
         <!--<package name="com.inga.bean"/>-->
     </typeAliases>
-    <mappers>
-        <mapper resource="com/inga/mappers/Customer.xml"/>
-        <mapper resource="com/inga/mappers/TUser.xml"/>
-    </mappers>
+
 </configuration>

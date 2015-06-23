@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inga.dao.FromMsgMapper">
+
+ <!-- <cache />-->
+
+  <resultMap id="msgBean" type="com.inga.bean.WeiXinMsg">
+  	 <id column="id" property="id" jdbcType="VARCHAR"/>
+    <result column="tousername" property="tousername"  jdbcType="VARCHAR"/>
+    <result column="fromusername" property="fromusername" jdbcType="VARCHAR"/>
+    <result column="createtime" property="createtime" jdbcType="VARCHAR"/>
+    <result column="msgtype" property="msgtype" jdbcType="VARCHAR"/>
+    <result column="content" property="content" jdbcType="VARCHAR"/>
+    <result column="msgid" property="msgid" jdbcType="VARCHAR"/>
+  </resultMap>
+
+  <sql id="msgColumns"> tousername,fromusername,createtime,msgtype,content,msgid </sql>
+
+  <insert id="insertFromMsg" parameterType="java.util.Map">
+      INSERT INTO WEIXINMSG ( tousername,fromusername,createtime,msgtype,content,msgid )
+      VALUES (#{ToUserName} , #{FromUserName} , #{CreateTime} , #{MsgType} ,#{Content} , #{MsgId})
+  </insert>
+
+    <select id="selectMsg"  resultMap="msgBean">
+      SELECT
+        <include refid="msgColumns"/>
+      FROM weixinmsg
+
+    </select>
+
+
+</mapper>

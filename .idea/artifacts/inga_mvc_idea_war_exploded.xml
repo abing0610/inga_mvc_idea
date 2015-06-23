@@ -42,10 +42,18 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.5.3" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.5.3" />
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.5" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.7.3" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.5.4" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:fluent-hc:4.4.1" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.4.1" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient-cache:4.4.1" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpmime:4.4.1" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore:4.4.1" />
+          <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="F:\work\inga_mvc_idea\target/MANIFEST.MF" />
+        <element id="file-copy" path="E:\idea\work\inga_mvc_idea\target/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="inga_mvc_idea/web/Web" />
     </root>
